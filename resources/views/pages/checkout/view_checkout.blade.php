@@ -25,13 +25,13 @@
 									<input type="text" name="shipping_phone" class="shipping_phone" placeholder="Số điện thoại">
 									<input type="text" name="shipping_address" class="shipping_address" placeholder="Địa chỉ nhận hàng *">
 							        <textarea name="shipping_note" class="shipping_note" placeholder="Ghi chú đơn hàng của bạn" rows="5"></textarea>
-
+									
 									@if(Session::get('fee'))
 										<input type="hidden" name="fee_shipping" class="fee_shipping" value="{{Session::get('fee')}}">
 									@else
 										<input type="hidden" name="fee_shipping" class="fee_shipping" value="10000">
 									@endif
-
+									
 									@if(Session::get('coupon'))
 										@foreach(Session::get('coupon') as $key => $val)
 											<input type="hidden" name="coupon_value" class="coupon_value" value="{{$val['coupon_code']}}">
@@ -39,7 +39,7 @@
 									@else
 										<input type="hidden" name="coupon_value" class="coupon_value" value="0">
 									@endif
-
+									
 									<div class="form-group">
 										<label for="exampleInputFile">Chọn phương thức thanh toán</label>
 										<select class="form-control input-sm m-bot15 payment_select" name="payment_select" id="payment_select">
@@ -56,7 +56,7 @@
                                     <label for="exampleInputFile">Chọn thành phố</label>
                                     <select class="form-control input-sm m-bot15 choose city" name="nameCity" id="nameCity">
                                         <option value="0">Chọn tỉnh thành phố</option>
-                                        @foreach($cityData as $key => $ci)
+                                        @foreach($cityData as $key => $ci) 
                                             <option value="{{ $ci->matp }}">{{ $ci->name_city }}</option>
                                         @endforeach
                                     </select>
@@ -65,34 +65,31 @@
                                     <label for="exampleInputFile">Chọn quận huyện</label>
                                     <select class="form-control input-sm m-bot15 choose province" name="nameProvince" id="nameProvince">
                                         <option value="0">Chọn quận huyện</option>
-                                        @foreach($cityData as $key => $ci)
-                                            <option value="{{ $ci->maqh }}">{{ $ci->name_qh }}</option>
-                                        @endforeach
+                                        
+
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Chọn xã phường</label>
                                     <select class="form-control input-sm m-bot15 ward" name="nameWards" id="nameWards">
                                         <option value="0">Chọn xã phường</option>
-                                        @foreach($cityData as $key => $ci)
-                                            <option value="{{ $ci->maxa }}">{{ $ci->name_xa }}</option>
-                                        @endforeach
+
                                     </select>
                                 </div>
-
+                               
                                 <button type="button" class="btn btn-info feeship_calculate">Tính phí vận chuyển</button>
 								</form>
 							</div>
-
+							
 						</div>
-					</div>
+					</div>			
 				</div>
 			</div>
 			<div class="table-responsive cart_info">
 			<?php
 				$totalcartPrice = 0;
 			?>
-
+			
 
 			@if(session()->has('message'))
 			<div class="alert alert-danger">
@@ -101,7 +98,7 @@
 			@elseif(session()->has('error'))
 				{{ session()->get('error') }}
 			@endif
-
+			
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
@@ -115,15 +112,10 @@
 					</thead>
 					<form action="{{URL::to('/update-cart')}}" method="POST">
 					<tbody>
-
+					
 					@if(Session::get('cart'))
-                        @php
-                            $arr = session()->get('cart');
-                            array_pop($arr);
-                        @endphp
-
-                        @foreach($arr as $key => $cart)
-
+                        @foreach(Session::get('cart') as $key => $cart)
+						
 						<tr>
 							<td class="cart_product">
 								<a href=""><img src="{{URL::to('public/upload/product/'.$cart['product_image'])}}" alt="" width="50" height="50"></a>
@@ -136,12 +128,12 @@
 								<p>{{number_format($cart['product_price'],0,',','.')}}đ</p>
 							</td>
 							<td class="cart_quantity">
-
+								
 								{{ csrf_field() }}
 								<div class="cart_quantity_button">
 									<input class="cart_quantity_input" type="number" min="1" name="quantity_change[{{$cart['session_id']}}]" value="{{$cart['product_qty']}}" size="2">
 								</div>
-
+								
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">
@@ -153,19 +145,19 @@
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="{{URL::to('/del-cart/'.$cart['session_id'])}}"><i class="fa fa-times"></i></a>
-
+								
 							</td>
-
+                        
 						</tr>
                         @endforeach
 						<tr>
 							<td colspan="5">
 								<input type="submit" value="Cập nhật giỏ hàng" class="submitQty check_out">
 								<a href="{{URL::to('/delete-cart')}}" class="submitQty check_out">Xóa tất cả sản phẩm</a>
-
+								
 									<?php
 									$customer_id = Session::get('customer_id');
-
+								
 									if($customer_id != NULL) {
 									?>
 									<a class="check_out" onclick="return alert('Bạn chưa có gì trong giỏ hàng, vui lòng thêm một sản phẩm')" href="#">Thanh toán</a>
@@ -177,65 +169,65 @@
 									<?php } ?>
 								<div class="pull-right"><ul>
 									<li>Tổng tiền sản phẩm: <span>{{number_format($totalcartPrice,0,',','.')}} đ</span></li>
-
+											
 									@if(Session::get('coupon'))
 										@foreach(Session::get('coupon') as $key => $val)
 											@if($val['coupon_condition'] == 1)
 												<li>Mã giảm: {{ $val['coupon_number']}} % <a href="{{url('/unset-coupon')}}"><i class="fa fa-times"></i></a></li>
-
+												
 												@php
 													$couponMonmey = ($totalcartPrice * $val['coupon_number']) / 100;
 													echo '<li>Số tiền được giảm: '.number_format($couponMonmey,0,',','.').' đ</li>';
 													$totalAfterCoupon = $totalcartPrice - $couponMonmey;
-
+													
 												@endphp
 											@else
 												<li>Mã giảm: {{ number_format($val['coupon_number'],0,',','.')}} đ <a href="{{url('/unset-coupon')}}"><i class="fa fa-times"></i></a></li>
-
+												
 												@php
 													echo '<li>Số tiền được giảm: '.number_format($val['coupon_number'],0,',','.').' đ</li>';
 													$totalAfterCoupon = $totalcartPrice - $val['coupon_number'];
-
+													
 												@endphp
 											@endif
 										@endforeach
 									@endif
 									@if(Session::get('fee'))
-										<li>Phí vận chuyển: <span>{{number_format(Session::get('fee'),0,',','.')}}
+										<li>Phí vận chuyển: <span>{{number_format(Session::get('fee'),0,',','.')}}	
 										<a href="{{url('/delete-fee-home')}}"><i class="fa fa-times"></i></a>
 										</span></li>
 									@endif
 
-									<?php
+									<?php 
 										$totalAfterAll = 0;
 										if(Session::get('coupon')) {
 											if(!Session::get('fee')) {
 												$totalAfterAll = $totalAfterCoupon;
 											} elseif(Session::get('fee')) {
 												$totalAfterAll = $totalAfterCoupon + Session::get('fee');
-											}
+											} 
 										} else {
 											if(Session::get('fee')) {
 												$totalAfterAll = $totalcartPrice + Session::get('fee');
 											} else {
 												$totalAfterAll = $totalcartPrice;
-											}
+											} 
 										}
 										echo '<li>Tổng tiền thanh toán: '.number_format($totalAfterAll,0,',','.').' đ</li>';
 									?>
-
+									
 								</ul></div>
 							</td>
 						</tr>
-
-
+					
+						
 					</tbody>
 					</form>
 					<tr>
 						<td>
 							<form action="{{URL::to('/check-coupon')}}" method="POST">
 							@csrf
-							<input type="text" name="coupon_code" value="@php
+							<input type="text" name="coupon_code" value="@php 
 							if(Session::get('coupon')) {
 								foreach(Session::get('coupon') as $key =>$val) {
 									echo $val['coupon_code'];
@@ -254,9 +246,9 @@
 						<tr><td colspan="5"><center><p>Không có sản phẩm nào</p></center></td></tr>
 						@endif
 				</table>
-
-
+				
+				
 			</div>
-
+			
 	</section> <!--/#cart_items-->
 @endsection

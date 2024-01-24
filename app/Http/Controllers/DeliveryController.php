@@ -9,12 +9,12 @@ use App\Models\Province;
 use App\Models\Wards;
 use App\Models\Feeship;
 use Illuminate\Support\Facades\Redirect; // dùng để chuyển hướng
-use Session; //
+use Session; // 
 session_start();
 class DeliveryController extends Controller
 {
     public function AuthLogin() {
-
+        
         if(Session::get('admin_id') != null) {
             return Redirect::to('admin.dashboard');
         } else {
@@ -24,7 +24,7 @@ class DeliveryController extends Controller
     public function update_feeship(Request $request) {
         $data = $request->all();
         $feeship = Feeship::find($data['fee_id']);
-
+        
         $new_fee = trim($data['fee_value'],'.');
         $feeship->fee_feeship = $new_fee;
         $feeship->save();
@@ -62,8 +62,8 @@ class DeliveryController extends Controller
         $feeship->fee_xaid = $data['ward'];
         $feeship->fee_feeship = $data['feeship'];
         $feeship->save();
-
-
+        
+        
     }
     public function get_delivery(Request $request) {
         $data = $request->all();
@@ -85,8 +85,8 @@ class DeliveryController extends Controller
     }
     public function delivery() {
         $this->AuthLogin();
-        $cityData = City::orderBy('id','ASC')->get();
-
+        $cityData = City::orderBy('matp','ASC')->get();
+        
         return view('admin.delivery.add_delivery')->with(compact('cityData',$cityData));
     }
 }
