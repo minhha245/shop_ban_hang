@@ -7,7 +7,7 @@
                         <header class="panel-heading">
                             Thêm giá vận chuyển
                         </header>
-                        <?php 
+                        <?php
                             $message = Session::get('message');
                             if($message) {
                                 echo "<span class='text-alert'>".$message."</span>";
@@ -22,7 +22,7 @@
                                     <label for="exampleInputFile">Chọn thành phố</label>
                                     <select class="form-control input-sm m-bot15 choose city" name="nameCity" id="nameCity">
                                         <option value="0">Chọn tỉnh thành phố</option>
-                                        @foreach($cityData as $key => $ci) 
+                                        @foreach($cityData as $key => $ci)
                                             <option value="{{ $ci->matp }}">{{ $ci->name_city }}</option>
                                         @endforeach
                                     </select>
@@ -31,18 +31,21 @@
                                     <label for="exampleInputFile">Chọn quận huyện</label>
                                     <select class="form-control input-sm m-bot15 choose province" name="nameProvince" id="nameProvince">
                                         <option value="0">Chọn quận huyện</option>
-                                        
-
+                                        @foreach($cityData as $key => $ci)
+                                            <option value="{{ $ci->maqh }}">{{ $ci->name_qh }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Chọn xã phường</label>
                                     <select class="form-control input-sm m-bot15 ward" name="nameWards" id="nameWards">
                                         <option value="0">Chọn xã phường</option>
-
+                                        @foreach($cityData as $key => $ci)
+                                            <option value="{{ $ci->maxa }}">{{ $ci->name_xa }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                               
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Phí vận chuyển</label>
                                     <input type="text" name="feeship" class="form-control feeship" id="feeship">

@@ -9,9 +9,15 @@ class City extends Model
 {
     public $timestamps = false;
     protected $fillable = [
+        'id',
+        'matp',
+        'maqh',
+        'maxa',
         'name_city',
-        'type'
+        'name_qh',
+        'name_xa',
+
     ];
-    protected $primaryKey = 'matp';
+    protected $primaryKey = 'id';
     protected $table = 'tbl_tinhthanhpho';
 }
