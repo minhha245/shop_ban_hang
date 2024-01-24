@@ -7,7 +7,7 @@
             $message = Session::get('message');
             if($message != null) {
                 Session::put('message',null);
-                echo "<p style='color: red;text-align: center'>".$message."</p>";
+                echo "<p style='color: red;text-align: center'>".$message."</p>";  
             }
        ?>
         <div class="status alert alert-success" style="display: none"></div>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <textarea name="contact_message" id="message" required="required" class="form-control" rows="8" placeholder="Nội dung lời nhắn"></textarea>
-                </div>
+                </div>                        
                 <div class="form-group col-md-12">
                     <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
                 </div>
@@ -40,7 +40,7 @@
             <p>Vĩnh Long VN</p>
             <p>Mobile: +84 943 836 766</p>
             <p>Fax: 1-714-252-0026</p>
-            <p>Email: minhha@gmail.com</p>
+            <p>Email: huynhnhan.dev@gmail.com</p>
         </address>
         <div class="social-networks">
             <h2 class="title text-center">Mạng xã hội</h2>
@@ -60,5 +60,5 @@
             </ul>
         </div>
     </div>
-</div>
+</div> 	
 @endsection

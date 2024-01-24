@@ -26,7 +26,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <![endif]-->       
     <link rel="shortcut icon" href="{{asset('public/frontend/img/ico/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png')}}">
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div><!--/header_top-->
-
+		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -80,7 +80,7 @@
 									<li><a href="#">UK</a></li>
 								</ul>
 							</div>
-
+							
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
 									DOLLAR
@@ -123,12 +123,12 @@
 									<?php
 									}
 									?>
-
-
+								
+								
 								<li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
 									<?php
 									$customer_id = Session::get('customer_id');
-
+								
 									if($customer_id != NULL) {
 									?>
 									<li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
@@ -136,14 +136,14 @@
 									else {?>
 										<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
 									<?php } ?>
-
+								
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-
+	
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -162,15 +162,15 @@
 								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
                                     </ul>
-                                </li>
+                                </li> 
 								<li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
-                                </li>
+                                </li> 
 								<li><a href="{{URL::to('/view-cart')}}">Giỏ hàng</a></li>
 								<li><a href="{{URL::to('/contact')}}">Liên hệ</a></li>
 							</ul>
@@ -189,7 +189,7 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-
+	
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -200,7 +200,7 @@
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
-
+						
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
@@ -226,7 +226,7 @@
 									<img src="{{URL::to('public/frontend/img/home/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
-
+							
 							<div class="item">
 								<div class="col-sm-6">
 									<h1><span>E</span>-SHOPPER</h1>
@@ -239,9 +239,9 @@
 									<img src="{{URL::to('public/frontend/img/home/pricing.png')}}" class="pricing" alt="" />
 								</div>
 							</div>
-
+							
 						</div>
-
+						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
@@ -249,12 +249,12 @@
 							<i class="fa fa-angle-right"></i>
 						</a>
 					</div>
-
+					
 				</div>
 			</div>
 		</div>
 	</section><!--/slider-->
-
+	
 	<section>
 		<div class="container">
 			<div class="row">
@@ -270,7 +270,7 @@
 							</div>
 							@endforeach
 						</div><!--/category-products-->
-
+					
 						<div class="brands_products"><!--brands_products-->
 							<h2>Thương hiệu sản phẩm</h2>
 							<div class="brands-name">
@@ -283,23 +283,23 @@
 								</ul>
 							</div>
 						</div><!--/brands_products-->
-
-
-
+						
+						
+						
 						<div class="shipping text-center"><!--shipping-->
 							<img src="{{URL::to('public/frontend/img/home/shipping.jpg')}}" alt="" />
 						</div><!--/shipping-->
-
+					
 					</div>
 				</div>
-
+				
 				<div class="col-sm-9 padding-right">
 					@yield('content')
 				</div>
 			</div>
 		</div>
 	</section>
-
+	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">
@@ -325,7 +325,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-
+						
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -340,7 +340,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-
+						
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -355,7 +355,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-
+						
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -380,7 +380,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -442,24 +442,24 @@
 							</form>
 						</div>
 					</div>
-
+					
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © {{ now()->year }} E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>
 		</div>
-
+		
 	</footer><!--/Footer-->
+	
 
-
-
+  
     <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
 	<script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>
@@ -508,14 +508,14 @@
 			});
 		})
 	</script>
-
+	
 
 	<div id="fb-root"></div>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0&appId=1011902732305839&autoLogAppEvents=1" nonce="D3BpO0xr"></script>
-
+	
 	<script>
 		$(document).ready(function() {
-
+		
 		$('.confirm-order').click(function(){
 		var shipping_name = $('.shipping_name').val();
 		var shipping_email = $('.shipping_email').val();
@@ -524,7 +524,7 @@
 		var shipping_note = $('.shipping_note').val();
 		var payment_select = $('.payment_select').val();
 		var _token = $('input[name="_token"]').val();
-
+		
 		var feeship = $('.fee_shipping').val();
 		var coupon = $('.coupon_value').val();
 		swal({
@@ -548,7 +548,7 @@
 						shipping_address:shipping_address,shipping_note:shipping_note,payment_select:payment_select,feeship:feeship,coupon:coupon,_token:_token
 					},
 					success: function () {
-
+						
 					}
 				});
 				swal("Thành công!", "Đơn hàng của bạn đã được xác nhận", "success");
@@ -559,7 +559,7 @@
 				swal("Đã đóng!", "Đơn hàng chưa được gửi đi", "error");
 			}
 		});
-
+			
 		});
 		$('.feeship_calculate').click(function(){
 			var cityId = $('.city').val();
@@ -568,7 +568,7 @@
 			var _token = $('input[name="_token"]').val();
 
 			if(cityId == 0 || provinceId == 0 || wardId == 0) {
-
+				
 				alert('Vui lòng chọn địa chỉ giao hàng');
 			} else {
 				$.ajax({
@@ -594,7 +594,7 @@
                 } else {
                     result = "nameWards";
                 }
-
+                
                 $.ajax({
                     url: '{{url::to("/get-delivery-home")}}',
                     method: 'POST',
